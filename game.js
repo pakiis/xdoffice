@@ -44,6 +44,7 @@ class MainScene extends Phaser.Scene {
         const floorLayer = map.createLayer('Floor', tileset, 0, 0);
         const wallsLayer = map.createLayer('Walls', tileset, 0, 0);
         const objectsLayer = map.createLayer('Objects', tileset, 0, 0);
+        if (objectsLayer) objectsLayer.setCollisionByExclusion([-1]);
 
         // Example: Set collision for walls if needed (optional for now)
         // wallsLayer.setCollisionByExclusion([-1]); // Assuming -1 means no tile, or use specific tile indices
@@ -93,6 +94,12 @@ class MainScene extends Phaser.Scene {
             wallsLayer.setCollisionByExclusion([-1]); // Collide with all tiles in 'Walls' layer
             this.physics.add.collider(this.player, wallsLayer);
             this.physics.add.collider(this.otherPlayers, wallsLayer); // Other players also collide with walls
+        }
+
+        // Add collision with Objects layer
+        if (objectsLayer) { // Check if objectsLayer exists
+            this.physics.add.collider(this.player, objectsLayer);
+            this.physics.add.collider(this.otherPlayers, objectsLayer);
         }
 
         // --- Socket.IO Event Handlers ---
