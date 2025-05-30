@@ -163,11 +163,12 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         // Note: Actual spritesheet animation playback (this.anims.play(...)) is commented out
         // as spritesheets are not yet implemented.
 
-        // Handle attack input
-        if (attackKeyJustPressed) {
-                }
-            }
-        }
+        // Di error no hace nada, pero si se implementan animaciones, se podría hacer algo como:
+        // // Handle attack input
+        // if (attackKeyJustPressed) {
+        //         }
+        //     }
+        // }
 
         // Handle attack input
         if (attackKeyJustPressed) {
